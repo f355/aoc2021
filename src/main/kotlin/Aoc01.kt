@@ -13,7 +13,7 @@ class Aoc01 : Aoc() {
             }
             .first
 
-    private fun solve2(input: List<String>) {
+    private fun solve2(input: List<String>) : Int {
         val ins = input.map { it.toInt() }.toIntArray()
         var cnt = 0
         var window = ins[0] + ins[1] + ins[2]
@@ -22,6 +22,6 @@ class Aoc01 : Aoc() {
             if (newWindow > window) cnt++
             window = newWindow
         }
-        println(cnt)
+        return cnt
     }
 }
