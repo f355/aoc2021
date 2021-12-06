@@ -1,9 +1,9 @@
-class Aoc03 : Aoc() {
+class Aoc03(day: String) : Aoc(day) {
     override fun run() {
-        println(solve1(readFile("03", true)))
-        println(solve1(readFile("03", false)))
-        println(solve2(readFile("03", true)))
-        println(solve2(readFile("03", false)))
+        println(solve1(readFile(true)))
+        println(solve1(readFile(false)))
+        println(solve2(readFile(true)))
+        println(solve2(readFile(false)))
     }
 
     private fun solve1(input: List<String>): Int {

@@ -1,14 +1,9 @@
-import java.lang.Integer.min
-import kotlin.math.absoluteValue
-import kotlin.math.max
-import kotlin.math.sign
-
-class Aoc06 : Aoc() {
+class Aoc06(day: String) : Aoc(day) {
     override fun run() {
-        println(solve(readFile("06", true)))
-        println(solve(readFile("06", false)))
-        println(solve(readFile("06", true), 256))
-        println(solve(readFile("06", false), 256))
+        println(solve(readFile(true)))
+        println(solve(readFile(false)))
+        println(solve(readFile(true), 256))
+        println(solve(readFile(false), 256))
     }
 
     private fun solve(input: List<String>, days: Int = 80): Long {

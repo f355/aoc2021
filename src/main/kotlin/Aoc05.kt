@@ -3,12 +3,12 @@ import kotlin.math.absoluteValue
 import kotlin.math.max
 import kotlin.math.sign
 
-class Aoc05 : Aoc() {
+class Aoc05(day: String) : Aoc(day) {
     override fun run() {
-        println(solve(readFile("05", true)))
-        println(solve(readFile("05", false)))
-        println(solve(readFile("05", true), true))
-        println(solve(readFile("05", false), true))
+        println(solve(readFile(true)))
+        println(solve(readFile(false)))
+        println(solve(readFile(true), true))
+        println(solve(readFile(false), true))
     }
 
     private fun solve(input: List<String>, withDiagonals: Boolean = false): Int {
