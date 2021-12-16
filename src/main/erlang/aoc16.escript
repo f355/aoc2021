@@ -15,7 +15,7 @@ do_stuff(In) ->
 
 parse(<<V:3, T:3, Rest/bitstring>>) ->
   {P, R} = case T of
-             4 -> parse_literal(Rest, <<>>, 0);
+             4 -> parse_literal(Rest, <<>>);
              _ -> parse_operator(Rest)
            end,
   {{V, T, P}, R}.
@@ -49,19 +49,17 @@ agg_values({_, 7, [P1, P2]}) ->
   case agg_values(P1) =:= agg_values(P2) of
     true -> 1;
     false -> 0
-  end;
-agg_values(_) ->
-  ok.
+  end.
 
 
-parse_literal(<<T:1, X:4, Rest/bitstring>>, Acc, Nibbles) ->
+parse_literal(<<T:1, X:4, Rest/bitstring>>, Acc) ->
+  Acc1 = <<Acc/bitstring, X:4>>,
   case T of
     1 ->
-      parse_literal(Rest, <<Acc/bitstring, X:4>>, Nibbles + 1);
+      parse_literal(Rest, Acc1);
     0 ->
-      Nibbles1 = Nibbles + 1,
-      Bits = Nibbles1 * 4,
-      <<Num:Bits>> = <<Acc/bitstring, X:4>>,
+      Bits = erlang:bit_size(Acc1),
+      <<Num:Bits>> = Acc1,
       {Num, Rest}
   end.
 
